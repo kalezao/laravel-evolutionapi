@@ -50,4 +50,9 @@ interface EvolutionApiInterface
      * Get all instances
      */
     public function getInstances(): array;
+
+    /**
+     * Get all groups for an instance
+     */
+    public function getGroups(string $instance, bool $withParticipants = false): array;
 }

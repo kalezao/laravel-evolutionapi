@@ -85,13 +85,30 @@ final class EvolutionApiService implements EvolutionApiInterface
         return $this->makeRequest('GET', '/instance/fetchInstances');
     }
 
-    private function makeRequest(string $method, string $endpoint, array $data = []): array
+    /**
+     * Get all groups for an instance
+     */
+    public function getGroups(string $instance, bool $withParticipants = false): array
+    {
+        return $this->makeRequest(
+            'GET',
+            "/group/fetchAllGroups/{$instance}",
+            [],
+            ['getParticipants' => $withParticipants]
+        );
+    }
+
+    private function makeRequest(string $method, string $endpoint, array $data = [], array $query = []): array
     {
         try {
             $options = [];
 
             if (! empty($data)) {
                 $options['json'] = $data;
+            }
+
+            if (! empty($query)) {
+                $options['query'] = $query;
             }
 
             $response = $this->client->request($method, $endpoint, $options);

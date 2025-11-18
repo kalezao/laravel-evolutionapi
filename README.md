@@ -54,6 +54,9 @@ $response = EvolutionAPI::createInstance([
 
 // Listar instâncias
 $instances = EvolutionAPI::getInstances();
+
+// Listar grupos da instância
+$groups = EvolutionAPI::getGroups('minha-instancia', true);
 ```
 
 ### Usando o Service Container
@@ -91,6 +94,7 @@ class MeuController extends Controller
 - `disconnectInstance($instance)` - Desconectar instância
 - `deleteInstance($instance)` - Deletar instância
 - `getInstances()` - Listar todas as instâncias
+- `getGroups($instance, $withParticipants = false)` - Listar grupos da instância (opcionalmente com participantes)
 
 ## Tratamento de Erros
 
