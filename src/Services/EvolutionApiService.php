@@ -94,7 +94,7 @@ final class EvolutionApiService implements EvolutionApiInterface
             'GET',
             "/group/fetchAllGroups/{$instance}",
             [],
-            ['getParticipants' => $withParticipants]
+            ['getParticipants' => $withParticipants ? 'true' : 'false']
         );
     }
 
